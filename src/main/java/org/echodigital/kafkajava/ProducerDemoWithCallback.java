@@ -30,9 +30,6 @@ public class ProducerDemoWithCallback {
 
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
 
-        // create producer record
-        ProducerRecord<String, String> record = new ProducerRecord<String,String>("first_topic", "Hello World");
-
         // send data -asynchronous
         Callback callback = new Callback(){
 
@@ -46,14 +43,20 @@ public class ProducerDemoWithCallback {
                 } else {
                     logger.info("Received new message . \n" +
                         "Topic: " + metadata.topic() + "\n" + 
-                        "Partion: " + metadata.topic() + "\n" + 
-                        "Offset: " + metadata.topic() + "\n" + 
+                        "Partion: " + metadata.partition() + "\n" + 
+                        "Offset: " + metadata.offset() + "\n" + 
                         "Timestamp: " + metadata.timestamp());  
                 }
                 
             }
         };
-        producer.send(record, callback);
+
+        for ( int i = 0; i < 10; i++) {
+                 // create producer record
+            ProducerRecord<String, String> record = new ProducerRecord<String,String>("first_topic", "Hello World" + Integer.toString(i));
+            producer.send(record, callback);
+        }
+      
 
         // flush data
         producer.flush();
