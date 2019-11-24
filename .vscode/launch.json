@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ProducerDemoWithCallback",
+            "request": "launch",
+            "mainClass": "org.echodigital.kafkajava.ProducerDemoWithCallback",
+            "projectName": "kafka-java"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ProducerDemo",
+            "request": "launch",
+            "mainClass": "org.echodigital.kafkajava.ProducerDemo",
+            "projectName": "kafka-java"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "org.echodigital.kafkajava.App",
+            "projectName": "kafka-java"
+        }
+    ]
+}
