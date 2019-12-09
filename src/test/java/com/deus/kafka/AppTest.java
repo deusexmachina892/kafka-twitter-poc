@@ -1,4 +1,4 @@
-package org.echodigital.kafkajava;
+package com.deus.kafka;
 
 import static org.junit.Assert.assertTrue;
 
