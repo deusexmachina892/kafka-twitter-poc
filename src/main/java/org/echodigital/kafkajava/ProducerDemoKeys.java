@@ -1,6 +1,7 @@
 package org.echodigital.kafkajava;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -15,10 +16,10 @@ import org.slf4j.LoggerFactory;
  * Hello world!
  *
  */
-public class ProducerDemoWithCallback {
-    public static void main( String[] args ) {
+public class ProducerDemoKeys {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
 
-        final Logger logger = LoggerFactory.getLogger(ProducerDemoWithCallback.class.getName());
+        final Logger logger = LoggerFactory.getLogger(ProducerDemoWithCallback.class);
 
         String bootstrapServers = "127.0.0.1:9092";
         
@@ -50,11 +51,17 @@ public class ProducerDemoWithCallback {
                 
             }
         };
+        String topic = "first_topic";
 
         for ( int i = 0; i < 10; i++) {
-                 // create producer record
-            ProducerRecord<String, String> record = new ProducerRecord<String,String>("first_topic", "Hello World" + Integer.toString(i));
-            producer.send(record, callback);
+            String value = "Hello World" + Integer.toString(i);
+            String key = "id_" + Integer.toString(i);
+
+            logger.info("Key: ", key);
+
+            // create producer record
+            ProducerRecord<String, String> record = new ProducerRecord<String,String>(topic, key, value);
+            producer.send(record, callback).get(); // block the send to make it synchronous - don't do it in prodcution
         }
       
 

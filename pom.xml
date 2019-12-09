@@ -39,6 +39,14 @@
       <!-- <scope>test</scope> -->
   </dependency>
 
+    <!-- Twitter Streaming Dependency -->
+    <dependency>
+      <groupId>com.twitter</groupId>
+      <artifactId>hbc-core</artifactId> <!-- or hbc-twitter4j -->
+      <version>2.2.0</version> <!-- or whatever the latest version is -->
+    </dependency>
+
+
   </dependencies>
 
   <build>
