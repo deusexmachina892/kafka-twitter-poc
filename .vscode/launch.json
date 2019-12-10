@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TwitterStream",
+            "request": "launch",
+            "mainClass": "com.deus.kafka.TwitterStream",
+            "projectName": "kafka-java"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TwitterProducer",
+            "request": "launch",
+            "mainClass": "com.deus.kafka.producers.TwitterProducer",
+            "projectName": "kafka-java"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ConsumerDemo",
             "request": "launch",
             "mainClass": "org.echodigital.kafkajava.ConsumerDemo",
